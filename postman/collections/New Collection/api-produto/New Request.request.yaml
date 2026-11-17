@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{url}}/produtos/1"
+method: PUT
+order: 2000
