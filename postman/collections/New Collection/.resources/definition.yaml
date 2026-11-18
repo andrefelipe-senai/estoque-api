@@ -1,3 +1,4 @@
 $kind: collection
+name: estoque-api
 variables:
-  url: ""
+  url: 'http://localhost:3000'
