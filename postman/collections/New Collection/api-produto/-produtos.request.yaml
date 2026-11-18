@@ -2,4 +2,4 @@ $kind: http-request
 name: /produtos
 url: "{{url}}/produtos"
 method: POST
-order: 1000
+order: 2000

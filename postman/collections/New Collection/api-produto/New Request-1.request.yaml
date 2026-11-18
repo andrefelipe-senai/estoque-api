@@ -1,5 +1,5 @@
 $kind: http-request
 name: New Request
-url: "{{url}}/produtos/1"
-method: DELETE
-order: 3000
+url: ""
+method: GET
+order: 4000

@@ -2,4 +2,4 @@ $kind: http-request
 name: /
 url: "{{url}}"
 method: GET
-order: 166
+order: 1000
