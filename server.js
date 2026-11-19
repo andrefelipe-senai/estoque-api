@@ -1,21 +1,19 @@
-require('dotenv').config();
-const loggerMiddleware = require('./src/middleware/logger');
-const valorProdutoMiddleware = require('./src/middleware/valor');
-const valorDobradoMiddleware = require('./src/middleware/valorDobrado')
-const express = require('express');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import {loggerMiddleware, valorProdutoMiddleware} from './src/middleware/index.js';
+import express, {json, urlencoded} from 'express';
+
 const app = express();
 const port = 3000;
 
 // Middleware para formatar o body para JSON
-app.use(express.json());
+app.use(json());
 //Para formatar os dados do formulário (x-www-form-urlencoded)
-app.use(express.urlencoded({extended: true}));
+app.use(urlencoded({extended: true}));
 
 app.use(loggerMiddleware);
-
 app.use(valorProdutoMiddleware);
-
-app.use(valorDobradoMiddleware)
 
 app.get('/', function(req, res){
     res.send('Ola, mundo. meu nome é ' + process.env.nome);
@@ -23,7 +21,12 @@ app.get('/', function(req, res){
 
 app.post('/produtos', (req, res) => {
     let produto = req.body
-    res.send(`O produto foi criado! Nome: ${produto.nome}, Valor: ${produto.preco}`)
+    //res.send(`O produto foi criado! Nome: ${produto.nome}, Valor: ${produto.preco}`)
+    res.status(201).json({
+        "status": "Criado",
+        "codigo": 200,
+        "mensagem": `O produto foi criado! Nome: ${produto.nome}, Valor: ${produto.preco}`
+    })
 });
 
 app.put('/produtos/:id', (req, res) => {

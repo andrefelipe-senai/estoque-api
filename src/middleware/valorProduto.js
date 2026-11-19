@@ -1,4 +1,4 @@
-const valorProduto = function(req, res, next) {
+export default function(req, res, next) {
     console.log(req.body.preco);
     
     let preco = req.body.preco
@@ -9,5 +9,3 @@ const valorProduto = function(req, res, next) {
         next();
     }
 }
-
-module.exports = valorProduto
