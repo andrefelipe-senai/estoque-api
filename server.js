@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import {loggerMiddleware, valorProdutoMiddleware} from './src/middleware/index.js';
+import {loggerMiddleware} from './src/middleware/index.js';
 import express, {json, urlencoded} from 'express';
 
 const app = express();
@@ -13,10 +13,13 @@ app.use(json());
 app.use(urlencoded({extended: true}));
 
 app.use(loggerMiddleware);
-app.use(valorProdutoMiddleware);
 
 app.get('/', function(req, res){
-    res.send('Ola, mundo. meu nome é ' + process.env.nome);
+    res.status(200).json({
+        "status": "OK",
+        "codigo": 200,
+        "mensagem": `Bem Vindo!`
+});
 });
 
 app.post('/produtos', (req, res) => {
@@ -31,12 +34,21 @@ app.post('/produtos', (req, res) => {
 
 app.put('/produtos/:id', (req, res) => {
     let id = req.params.id
-    res.send(`O produto ${id} foi alterado`)    
+    let produto = req.body
+    res.status(200).json({
+        "status": "Criado",
+        "codigo": 200,
+            "mensagem": `O produto ${id} foi alterado! Nome: ${produto.nome}, Valor: ${produto.preco}`
+    })  
 });
 
 app.delete('/produtos/:id', (req, res) => {
     let id = req.params.id
-    res.send(`O produto ${id} foi deletado.`)
+    res.status(200).json({
+        "status": "Deletado",
+        "codigo": 200,
+        "mensagem": `O produto foi Deletado! Nome: ${produto.nome}, Valor: ${produto.preco}`
+    })
 });
 
 app.listen(port, function(){
