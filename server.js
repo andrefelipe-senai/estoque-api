@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import db from './src/database/database.js'
 
 import {loggerMiddleware} from './src/middleware/index.js';
@@ -30,7 +27,7 @@ app.post('/produtos', (req, res) => {
         "status": "Criado",
         "codigo": 200,
         "mensagem": `O produto foi criado! Nome: ${produto.nome}, Valor: ${produto.preco}`
-    })
+    });
 });
 
 app.put('/produtos/:id', (req, res) => {
@@ -40,7 +37,7 @@ app.put('/produtos/:id', (req, res) => {
         "status": "Criado",
         "codigo": 200,
         "mensagem": `O produto ${id} foi alterado! Nome: ${produto.nome}, Valor: ${produto.preco}`
-    })  
+    });
 });
 
 app.delete('/produtos/:id', (req, res) => {
@@ -50,15 +47,32 @@ app.delete('/produtos/:id', (req, res) => {
         "status": "Deletado",
         "codigo": 200,
         "mensagem": `O produto ${id} foi Deletado! Nome: ${produto.nome}, Valor: ${produto.preco}`
-    })
-});
-
-app.get('/usuarios', (req, res) => {
-    res.status(200).json({
-        "status": "OK",
-        "codigo": 200,
-        "mensagem": `Lista de usuários`
     });
 });
+
+
+app.get('/usuarios', (req, res) => {
+
+    db('usuarios').select('*')
+        
+        .then((usuarios) => {
+            res.status(200).json({
+            "status": "OK",
+            "codigo": 200,
+            "mensagem": "usuarios"
+            })        
+        })
+
+        .catch(() => {
+            console.log('Erro ao consultar os usuários', error)
+            res.status(500).json({
+                "status": "Erro",
+                "codigo": 500,
+                "mensagem": "Erro ao consular os usuários"
+            })     
+        }) 
+
+});
+
 
 app.listen(port, () => {console.log('Servidor rodando na porta ' + port);});
