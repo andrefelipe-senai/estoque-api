@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+import db from './src/database/database.js'
+
 import {loggerMiddleware} from './src/middleware/index.js';
 import express, {json, urlencoded} from 'express';
 
