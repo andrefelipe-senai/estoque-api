@@ -23,8 +23,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/produtos', (req, res) => {
-    let produto = req.body
-    //res.send(`O produto foi criado! Nome: ${produto.nome}, Valor: ${produto.preco}`)
+    let produto = req.body;
     res.status(201).json({
         "status": "Criado",
         "codigo": 200,
@@ -33,24 +32,23 @@ app.post('/produtos', (req, res) => {
 });
 
 app.put('/produtos/:id', (req, res) => {
-    let id = req.params.id
-    let produto = req.body
+    let id = req.params.id;
+    let produto = req.body;
     res.status(200).json({
         "status": "Criado",
         "codigo": 200,
-            "mensagem": `O produto ${id} foi alterado! Nome: ${produto.nome}, Valor: ${produto.preco}`
+        "mensagem": `O produto ${id} foi alterado! Nome: ${produto.nome}, Valor: ${produto.preco}`
     })  
 });
 
 app.delete('/produtos/:id', (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
+    let produto = req.body;
     res.status(200).json({
         "status": "Deletado",
         "codigo": 200,
-        "mensagem": `O produto foi Deletado! Nome: ${produto.nome}, Valor: ${produto.preco}`
+        "mensagem": `O produto ${id} foi Deletado! Nome: ${produto.nome}, Valor: ${produto.preco}`
     })
 });
 
-app.listen(port, function(){
-    console.log('Servidor rodando na porta ' + port);
-});
+app.listen(port, () => {console.log('Servidor rodando na porta ' + port);});

@@ -2,13 +2,13 @@
   "name": "estoque-api",
   "version": "1.0.0",
   "description": "Projeto simples de controle de estoque",
-  "homepage": "https://github.com/andrefelipe01312010-dotcom/estoque-api#readme",
+  "homepage": "https://github.com/andrefelipe-senai/estoque-api#readme",
   "bugs": {
-    "url": "https://github.com/andrefelipe01312010-dotcom/estoque-api/issues"
+    "url": "https://github.com/andrefelipe-senai/estoque-api/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrefelipe01312010-dotcom/estoque-api.git"
+    "url": "git+https://github.com/andrefelipe-senai/estoque-api.git"
   },
   "license": "ISC",
   "author": "andrefelipe0201626@gmail.com",
