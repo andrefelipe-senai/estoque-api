@@ -63,7 +63,7 @@ app.get('/usuarios', (req, res) => {
             })        
         })
 
-        .catch(() => {
+        .catch((error) => {
             console.log('Erro ao consultar os usuários', error)
             res.status(500).json({
                 "status": "Erro",
