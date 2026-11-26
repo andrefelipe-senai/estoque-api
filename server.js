@@ -14,12 +14,12 @@ app.use(urlencoded({extended: true}));
 
 app.use(loggerMiddleware);
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
     res.status(200).json({
         "status": "OK",
         "codigo": 200,
         "mensagem": `Bem Vindo!`
-});
+    });
 });
 
 app.post('/produtos', (req, res) => {
@@ -49,6 +49,14 @@ app.delete('/produtos/:id', (req, res) => {
         "codigo": 200,
         "mensagem": `O produto ${id} foi Deletado! Nome: ${produto.nome}, Valor: ${produto.preco}`
     })
+});
+
+app.get('/usuarios', (req, res) => {
+    res.status(200).json({
+        "status": "OK",
+        "codigo": 200,
+        "mensagem": `Lista de usuários`
+    });
 });
 
 app.listen(port, () => {console.log('Servidor rodando na porta ' + port);});
